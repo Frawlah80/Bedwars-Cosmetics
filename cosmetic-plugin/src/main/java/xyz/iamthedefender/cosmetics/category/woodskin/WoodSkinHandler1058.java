@@ -1,10 +1,10 @@
 package xyz.iamthedefender.cosmetics.category.woodskin;
 
+import com.andrei1058.bedwars.api.events.shop.ShopBuyEvent;
+import com.cryptomorin.xseries.XMaterial;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.api.arena.IArena;
 import com.andrei1058.bedwars.api.arena.shop.IBuyItem;
-import com.andrei1058.bedwars.api.events.shop.ShopBuyEvent;
-import com.cryptomorin.xseries.XMaterial;
 import xyz.iamthedefender.cosmetics.Cosmetics;
 import xyz.iamthedefender.cosmetics.api.cosmetics.CosmeticsType;
 import xyz.iamthedefender.cosmetics.api.util.Utility;
@@ -30,11 +30,13 @@ public class WoodSkinHandler1058 implements Listener {
 
         if (Utility.isWoodOrLogBlock(stack.getType())) {
             String selected = Cosmetics.getInstance().getApi().getSelectedCosmetic(p, CosmeticsType.WoodSkins);
-            Optional<XMaterial> optional = XMaterial.matchXMaterial(selected.replace("-", "_").toUpperCase());
-            if (!optional.isPresent()) return;
-            XMaterial m = optional.get();
-            stack.setType(m.parseMaterial());
-            stack.setDurability(m.getData());
+            Optional<XMaterial> optionalMaterial = XMaterial.matchXMaterial(selected.replace("-", "_").toUpperCase());
+
+            if (optionalMaterial.isPresent()) {
+                XMaterial m = optionalMaterial.get();
+                stack.setType(m.parseMaterial());
+                stack.setDurability(m.getData());
+            }
         }
     }
 
@@ -59,11 +61,13 @@ public class WoodSkinHandler1058 implements Listener {
                 if (i.getType() == XMaterial.AIR.parseMaterial()) continue;
 
                 if (Utility.isWoodOrLogBlock(i.getType()) && selected != null) {
-                    Optional<XMaterial> optional = XMaterial.matchXMaterial(selected.replace("-", "_").toUpperCase());
-                    if (!optional.isPresent()) return;
-                    XMaterial m = optional.get();
-                    i.setType(m.parseMaterial());
-                    i.setDurability(m.getData());
+                    Optional<XMaterial> optionalMaterial = XMaterial.matchXMaterial(selected.replace("-", "_").toUpperCase());
+
+                    if (optionalMaterial.isPresent()) {
+                        XMaterial m = optionalMaterial.get();
+                        i.setType(m.parseMaterial());
+                        i.setDurability(m.getData());
+                    }
                 }
             }
         }

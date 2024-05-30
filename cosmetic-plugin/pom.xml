@@ -67,18 +67,18 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.andrei1058</groupId>
-            <artifactId>BedWars1058</artifactId>
-            <version>23.12.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/bedwars-plugin-23.12.2.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>com.tompkeuper</groupId>
             <artifactId>BedWars2023</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/bedwars2023-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.andrei1058.bedwars</groupId>
+            <artifactId>BedWars1058</artifactId>
+            <version>23.12.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/bedwars-plugin-23.12.1-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.andrei1058.bedwars</groupId>
